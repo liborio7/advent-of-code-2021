@@ -7,8 +7,7 @@
 (defn measure-increases [args]
   (->> args
        (partition 2 1)
-       (map (partial apply <))
-       (filter identity)
+       (filter (partial apply <))
        (count)
        ))
 
