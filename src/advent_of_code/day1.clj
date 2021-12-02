@@ -1,8 +1,8 @@
 (ns advent-of-code.day1
   (:require [advent-of-code.core :refer :all]))
 
-(defn parse-input []
-  (read-file "day1.txt" #(Integer/parseInt %)))
+(defn parse-input [input-file]
+  (read-file input-file #(Integer/parseInt %)))
 
 (defn measure-increases [args]
   (->> args
@@ -17,18 +17,19 @@
        (map (partial apply +))
        ))
 
-(defn solution-1 []
-  (->> (parse-input)
+(defn solution-1 [input-file]
+  (->> (parse-input input-file)
        (measure-increases)
        ))
 
-(defn solution-2 []
-  (->> (parse-input)
+(defn solution-2 [input-file]
+  (->> (parse-input input-file)
        (sliding-windows)
        (measure-increases)
        ))
 
 (comment
-  (time (solution-1))
-  (time (solution-2))
-  )
+  (let [input-file "day1.txt"]
+    (time (solution-1 input-file))
+    (time (solution-2 input-file))
+    ))
