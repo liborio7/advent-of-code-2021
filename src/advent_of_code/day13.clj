@@ -19,10 +19,10 @@
                         (update :value #(Integer/parseInt %)))))))
 
 (defn parse-input [filename]
-  (let [[dots-inputs _ instructions_inputs] (->> (read-file filename)
+  (let [[dots-inputs _ instructions-inputs] (->> (read-file filename)
                                                  (partition-by (partial = "")))]
     {:dots         (parse-dots-inputs dots-inputs)
-     :instructions (parse-instructions-inputs instructions_inputs)}))
+     :instructions (parse-instructions-inputs instructions-inputs)}))
 
 (defn follow-instruction [{:keys [direction value]} dot]
   (if (>= (direction dot) value)
